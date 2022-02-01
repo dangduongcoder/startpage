@@ -22,7 +22,7 @@ function search(i) {
 			case 'g':
 				q = q.substr(2);
 				window.location=(
-					'https://github.com/search?q=' +
+					'https://www.google.com/search?q=' +
 					q.replace(' ', '%20'));
 			break;
 			case 'l':
@@ -37,18 +37,12 @@ function search(i) {
 					'https://www.reddit.com/r/' +
 					q.replace(' ', ''));
 			break;
-			case 'a':
-				q = q.substr(2);
-				window.location=(
-					'https://www.amazon.it/s/?field-keywords=' +
-					q.replace(' ', '%20'));
-			break;
 			default:
 				window.location=('http://192.168.1.107:8888/search?q=' +
 					q.replace(' ', '%20'));
 		}
 	} else { // this is were `normal q` will be parsed
-		window.location=('http://192.168.1.107:8888/search?q=' +
+		window.location=('https://www.google.com/search?q=' +
 			q.replace(' ', '%20'));
 	}
 }

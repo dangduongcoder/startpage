@@ -19,6 +19,7 @@ body {
 	min-height: 30ch;
 	min-width: 20ww;
 	padding: 2em;
+	font-family: 'JetBrains Mono';
 }
 p {
 	margin: 0;
@@ -133,48 +134,49 @@ h3::after {
 	margin-left: 0.2em;
 }
 
-.math {
+.green {
 	background-color: #689d6a;
 }
 
-.\.\. {
+.other {
 	background-color: #928374;
 }
 
-.linux {
+.blue {
 	background-color: #458588;
 }
 
-.self {
+.white {
 	background-color: #d4be98;
 }
 
-.social {
+.pink {
 	background-color: #b16286;
 }
 
-.feed {
+.red {
 	background-color: #cc241d;
 }
 
-.reddit {
+.orange {
 	background-color: #d65d0e;
 }
 
 input {
 	background: none;
 	color: #32302f;
-	width: 17px;
+	/* width: 17px; */
 	font: inherit;
-	text-align: center;
+	text-align: left;
 	outline: none;
 	border: none;
 	border-radius: 0;
 	transition: .1s; /* uwu */
+	width: 80%;
 }
 textarea:focus,
 input:focus {
 	color: #d4be98;
 	outline: none;
-	width: 30%;
+	width: 80%;
 }
