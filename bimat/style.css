@@ -1,0 +1,359 @@
+*, *:before, *:after {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	font-size: 16px;
+	--catDur: 0.5s;
+	--cloudDur: 1s;
+}
+body {
+	background: hsl(199,82.5%,17.6%);
+	font: 1em "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 1.5;
+}
+main {
+	background: hsl(199,82.5%,77.6%);
+	margin: 1.5em auto 0 auto;
+	overflow: hidden;
+	position: relative;
+	width: 40em;
+	height: 40em;
+}
+.cat, .cat div, .cloud {
+	position: absolute;
+}
+.cat, .cat div {
+	transform-style: preserve-3d;
+}
+.cat {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 10.4em;
+	height: 20.8em;
+	z-index: 1;
+}
+.cat-body-upper {
+	background: hsl(0,0%,55%);
+	border-radius: 2.5em 2.5em 1em 1em;
+	top: 12.3em;
+	left: 3em;
+	width: 4.4em;
+	height: 4.5em;
+	transform: rotate(20deg);
+	transform-origin: 50% 4em;
+}
+.cat-head {
+	animation: headBobbing var(--catDur) linear infinite;
+	background-color: hsl(0,0%,60%);
+	background-image:
+		/* nose */
+		radial-gradient(0.4em 0.4em at 3.6em 1.8em,hsl(0,0%,0%) 48%,hsla(0,0%,0%,0) 50%),
+		/* cheeks */
+		radial-gradient(0.8em 0.8em at 0.8em 2.4em,hsl(0,100%,79.6%) 48%,hsla(0,100%,79.6%,0) 50%),
+		radial-gradient(0.8em 0.8em at 6em 2.4em,hsl(0,100%,79.6%) 48%,hsla(0,100%,79.6%,0) 50%),
+		/* mouth */
+		radial-gradient(1.6em 1.2em at 2.8em 2.8em,hsl(0,0%,67%) 48%,hsla(0,0%,67%,0) 50%),
+		radial-gradient(1.6em 1.2em at 4em 2.8em,hsl(0,0%,67%) 48%,hsla(0,0%,67%,0) 50%),
+		radial-gradient(1.6em 1.2em at 2.8em 3em,hsl(0,0%,50%) 48%,hsla(0,0%,50%,0) 50%),
+		radial-gradient(1.6em 1.2em at 4em 3em,hsl(0,0%,50%) 48%,hsla(0,0%,50%,0) 50%)
+		;
+	border-radius: 1.6em 1.6em 2em 2em / 1.2em 1.2em 1.6em 1.6em;
+	top: -2em;
+	left: 0;
+	width: 6.4em;
+	height: 4em;
+	transform: rotate(-20deg);
+	transform-origin: 50% 75%;
+	z-index: 2;
+}
+.right-ear, .left-ear {
+	animation: earSwing var(--catDur) linear infinite;
+	background: hsl(0,0%,55%);
+	bottom: 3.6em;
+	width: 2em;
+	height: 2em;
+	transform: translateZ(-1px);
+	transform-origin: 50% 100%;
+	z-index: -1;
+}
+.right-ear {
+	border-radius: 0.6em 1.2em 0 0 / 1em 2em 0 0;
+	left: 0.5em;
+}
+.left-ear {
+	border-radius: 1.2em 0.6em 0 0 / 2em 1em 0 0;
+	right: 0.6em;
+}
+.right-eye, .left-eye {
+	animation: eyeBobbing var(--catDur) linear infinite;
+	background: radial-gradient(100% 100% at 30% 30%,hsl(0,0%,87%) 20%,hsl(0,0%,10%) 25%);
+	border-radius: 50%;
+	top: 0.8em;
+	width: 1.2em;
+	height: 1.2em;
+}
+.right-eye {
+	left: 1.2em;
+}
+.left-eye {
+	right: 0.8em;
+}
+.right-arm, .right-paw, .left-arm, .left-paw {
+	background-color: hsl(0,0%,60%);
+	border-radius: 0.75em;
+	transform-origin: 0.75em 0.75em;
+	width: 1.5em;
+}
+.right-arm, .left-arm {
+	transform: rotate(-60deg);
+	height: 3em;
+	z-index: 1;
+}
+.right-arm {
+	top: 1.8em;
+	left: 0em;
+}
+.left-arm {
+	top: 0.6em;
+	left: 2.8em;
+}
+.right-paw, .left-paw {
+	animation: pawSwing var(--catDur) linear infinite;
+	background-image:
+		radial-gradient(0.2em 0.4em at 35% 2.6em,hsl(0,0%,45%) 48%,hsla(0,0%,45%,0) 50%),
+		radial-gradient(0.2em 0.4em at 75% 2.6em,hsl(0,0%,45%) 48%,hsla(0,0%,45%,0) 50%);
+	top: 2em;
+	left: 0;
+	height: 2.8em;
+	transform: rotate(40deg);
+}
+.cat-body-lower, .right-leg, .left-leg, .foot {
+	background: hsl(0,0%,55%);
+}
+.cat-body-lower {
+	animation: bodyLowerUpDown var(--catDur) linear infinite;
+	border-radius: 40% 25% 35% 35%;
+	top: 1.5em;
+	left: 0;
+	width: 4.4em;
+	height: 5em;
+	transform: rotate(-20deg);
+	transform-origin: 50% 2em;
+}
+.balloon-str-loop, .balloon-str-loop div {
+	background: hsl(0,0%,10%);
+	border-radius: 0.2em;
+	width: 0.4em;
+	transform-origin: 0.2em 0.2em;
+}
+.balloon-str-loop {
+	top: 1.6em;
+	left: -0.2em;
+	height: 5.4em;
+	transform: rotate(-60deg);
+	z-index: 1;
+}
+.balloon-str-loop div:not(.balloon-str-pt11) {
+	height: 1.2em;
+}
+.balloon-str-loop div > div {
+	top: 0.9em;
+}
+.balloon-str-pt1 {
+	animation: stringWobble1 var(--catDur) linear infinite;
+	transform: rotate(-120deg);
+}
+.balloon-str-pt2,
+.balloon-str-pt3,
+.balloon-str-pt6,
+.balloon-str-pt7 {
+	animation: stringWobble2 var(--catDur) linear infinite;
+}
+.balloon-str-pt4,
+.balloon-str-pt5,
+.balloon-str-pt8,
+.balloon-str-pt9 {
+	animation: stringWobble3 var(--catDur) linear infinite;
+}
+.balloon-str-pt11 {
+	animation: stringWobble4 var(--catDur) linear infinite;
+	height: 0.8em;
+	transform: rotate(90deg);
+}
+.balloon {
+	background-color: hsl(224, 100%, 61%);
+	background-image: radial-gradient(1em 1em at 73% 68%,hsl(0,0%,87%) 48%,hsla(0,0%,87%,0) 50%);
+	border-radius: 3.8em 2.8em 2.8em 3.8em / 50% 50% 50% 50%;
+	box-shadow:
+		0.4em 0.2em 0 hsl(224, 100%, 51%) inset;
+	display: block;
+	position: absolute;
+	top: -2.4em;
+	left: 0.4em;
+	width: 6.4em;
+	height: 5.6em;
+	transform: translateZ(-1px);
+}
+.balloon:before {
+	background-color: inherit;
+	border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 2em;
+	left: -1em;
+	width: 0.6em;
+	height: 1.6em;
+}
+.right-leg, .left-leg, .foot {
+	animation: legSwing var(--catDur) linear infinite;
+	width: 1.5em;
+	transform-origin: 50% 0.75em;
+}
+.right-leg, .left-leg {
+	bottom: -1em;
+	height: 3em;
+}
+.right-leg {
+	border-radius: 0.75em 0.3em 0.75em 0.75em;
+	left: 0.2em;
+}
+.left-leg {
+	border-radius: 0.3em 0.75em 0.75em 0.75em;
+	right: 0;
+}
+.foot {
+	background-image:
+		radial-gradient(0.2em 0.4em at 35% 2em,hsl(0,0%,30%) 48%,hsla(0,0%,30%,0) 50%),
+		radial-gradient(0.2em 0.4em at 75% 2em,hsl(0,0%,30%) 48%,hsla(0,0%,30%,0) 50%);
+	border-radius: 0.75em;
+	top: 1.75em;
+	height: 2.25em;
+}
+.tail-pt1, .tail-pt1 div {
+	background: hsl(0,0%,60%);
+	width: 1.4em;
+	height: 2em;
+}
+.tail-pt1 {
+	border-radius: 0 0 50% 50%;
+	top: 3.5em;
+	left: 0em;
+	transform: translateZ(-1px) rotate(90deg);
+	transform-origin: 0.7em 0;
+}
+.tail-pt2, .tail-pt3, .tail-pt4 {
+	animation: tailWag var(--catDur) linear infinite;
+	border-radius: 50%;
+	top: 0.6em;
+	left: 0;
+	transform: rotate(20deg);
+	transform-origin: 0.8em 0.8em;
+}
+.cloud {
+	background-image:
+		radial-gradient(10.8em 10.8em at 9.8em 5.4em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%),
+		radial-gradient(6.4em 6.4em at 14.8em 4em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%),
+		radial-gradient(5em 5em at 17em 4.6em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%),
+		radial-gradient(7em 7em at 16.7em 8.3em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%),
+		radial-gradient(12em 10.4em at 10.2em 10em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%),
+		radial-gradient(7.6em 7em at 3.8em 8.8em,hsl(0,0%,100%) 49%,hsla(0,0%,100%,0) 50%)
+		;
+	width: 20.2em;
+	height: 15.2em;
+}
+.left1, .left2 {
+	animation: cloudScroll1 var(--cloudDur) linear infinite;
+	left: -2em;
+}
+.right1, .right2 {
+	animation: cloudScroll2 var(--cloudDur) linear infinite;
+	right: -5.2em;
+}
+.left1 {
+	top: -10em;
+}
+.left2 {
+	top: -60em;
+}
+.right1 {
+	top: 14.8em;
+}
+.right2 {
+	top: -25.2em;
+}
+
+/* animations */
+@keyframes headBobbing {
+	from, to {
+		background-position: 0 0;
+		transform: rotate(-20deg) translateY(0);
+	}
+	50% {
+		background-position: 0 -0.2em;
+		transform: rotate(-20deg) translateY(0.4em);
+	}
+}
+@keyframes earSwing {
+	from, to { transform: translateZ(-1px) rotate(0deg) }
+	75% { transform: translateZ(-1px) rotate(-9deg) }
+}
+@keyframes eyeBobbing {
+	from, to { transform: translateY(0) scaleY(1) }
+	50% { transform: translateY(-0.2em) scaleY(0.92) }
+}
+@keyframes pawSwing {
+	from, to { transform: rotate(40deg) }
+	75% { transform: rotate(55deg) }
+}
+@keyframes legSwing {
+	from, to { transform: rotate(0deg) }
+	75% { transform: rotate(8deg) }
+}
+@keyframes stringWobble1 {
+	from, to { transform: rotate(-130deg) }
+	50% { transform: rotate(-110deg) }
+}
+@keyframes stringWobble2 {
+	from, to { transform: rotate(10deg) }
+	50% { transform: rotate(-10deg) }
+}
+@keyframes stringWobble3 {
+	from, to { transform: rotate(-10deg) }
+	50% { transform: rotate(10deg) }
+}
+@keyframes stringWobble4 {
+	from, to { transform: rotate(100deg) }
+	50% { transform: rotate(80deg) }
+}
+@keyframes bodyLowerUpDown {
+	from, to { height: 5em }
+	75% { height: 4.6em }
+}
+@keyframes tailWag {
+	from, to { transform: rotate(20deg) }
+	50% { transform: rotate(-20deg) }
+}
+@keyframes cloudScroll1 {
+	from { transform: translateY(0) }
+	to { transform: translateY(50em) }
+}
+@keyframes cloudScroll2 {
+	from { transform: translateY(0) }
+	to { transform: translateY(40em) }
+}
+
+.say {
+	position: absolute;
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: larger;
+	top: 60px;
+	left: 100px;
+	font-weight: bold;
+}
